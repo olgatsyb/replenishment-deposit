@@ -1,7 +1,7 @@
 'use strict';
 function calculateResults(amount, period) {
-    function convertToRatesString(period){
-        const percentLevel = period;
+    function convertToRatesString(periods){
+        const percentLevel = periods;
         const firstPercent = 2; // for 3-5 months
         const secondPercent = 2.2; // for 6-8 months
         const thirdPercent = 2.3; // for 9-11 months
@@ -16,7 +16,7 @@ function calculateResults(amount, period) {
             if (percentLevel >= 18) {return fifthPercent;}
         }
     }
-    const percent = convertToRatesString(period)
+    const percent = convertToRatesString(period);
     const total = amount * (1 + percent / 100 / 12) ** period;
     const profit = total - amount;
     return {
