@@ -30,7 +30,34 @@ function handleSubmit(evt) {
     evt.preventDefault();
 
     const amount = Number(amountInputEl.value);
+    if (Number.isNaN(amount)){
+        amountErrorEl.textContent = 'Неверное значение. Введите число, например: 15000';
+        return;
+    }
+    if (amount < 15000) {
+        amountErrorEl.textContent = "Неверное значение. Минимальная сумма: 15000 ₽";
+        return;
+    }
+    if (amount > 50000000) {
+        amountErrorEl.textContent = "Неверное значение. Максимальная сумма: 50000000 ₽";
+        return;
+    }
+
     const period = Number(periodInputEl.value);
+    if (Number.isNaN(period)){
+        periodErrorEl.textContent = 'Неверное значение. Введите число месяцев, например: 3';
+        return;
+    }
+    if (period < 3) {
+        periodErrorEl.textContent = "Неверное значение. Минимальный период: 3 месяца";
+        return;
+    }
+    if (period > 18) {
+        periodErrorEl.textContent = "Неверное значение. Максимальный период: 18 месяцев";
+        return;
+    }
+
+
 
     const result = calculateResults(amount, period);
     totalEl.textContent = result.total.toFixed(0);
@@ -43,6 +70,8 @@ formEl.addEventListener('submit', handleSubmit, true);
 
 const amountInputEl = document.getElementById ('amount-input');
 const periodInputEl = document.getElementById ('period-input');
+const amountErrorEl = document.getElementById('amount-error');
+const periodErrorEl = document.getElementById('period-error');
 const totalEl = document.getElementById('total');
 const profitEl = document.getElementById('profit');
 const percentEl = document.getElementById('percent');
