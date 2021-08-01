@@ -24,18 +24,20 @@ function calculateResults(amount, period) {
         total,
         profit,
     };
+
 }
 function handleSubmit(evt) {
     evt.preventDefault();
 
     const amount = Number(amountInputEl.value);
-    const period = Number(periodInputEl);
+    const period = Number(periodInputEl.value);
 
     const result = calculateResults(amount, period);
     totalEl.textContent = result.total.toFixed(0);
     profitEl.textContent = result.profit.toFixed(0);
-    percentEl.textContent = result.percent.toFixed();
+    percentEl.textContent = result.percent.toFixed(1);
 }
+
 const formEl = document.getElementById('deposit-form');
 formEl.onsubmit = handleSubmit;
 
@@ -44,5 +46,3 @@ const periodInputEl = document.getElementById ('period-input');
 const totalEl = document.getElementById('total');
 const profitEl = document.getElementById('profit');
 const percentEl = document.getElementById('percent');
-
-// Number.prototype.toFixed
