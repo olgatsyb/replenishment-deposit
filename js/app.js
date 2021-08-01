@@ -29,17 +29,23 @@ function calculateResults(amount, period) {
 function handleSubmit(evt) {
     evt.preventDefault();
 
+    totalEl.textContent = '';
+    profitEl.textContent = '';
+    percentEl.textContent = '';
+    amountErrorEl.textContent = '';
+    periodErrorEl.textContent = '';
+
     const amount = Number(amountInputEl.value);
     if (Number.isNaN(amount)){
         amountErrorEl.textContent = 'Неверное значение. Введите число, например: 15000';
         return;
     }
     if (amount < 15000) {
-        amountErrorEl.textContent = "Неверное значение. Минимальная сумма: 15000 ₽";
+        amountErrorEl.textContent = 'Неверное значение. Минимальная сумма: 15000 ₽';
         return;
     }
     if (amount > 50000000) {
-        amountErrorEl.textContent = "Неверное значение. Максимальная сумма: 50000000 ₽";
+        amountErrorEl.textContent = 'Неверное значение. Максимальная сумма: 50000000 ₽';
         return;
     }
 
@@ -49,11 +55,11 @@ function handleSubmit(evt) {
         return;
     }
     if (period < 3) {
-        periodErrorEl.textContent = "Неверное значение. Минимальный период: 3 месяца";
+        periodErrorEl.textContent = 'Неверное значение. Минимальный период: 3 месяца';
         return;
     }
     if (period > 18) {
-        periodErrorEl.textContent = "Неверное значение. Максимальный период: 18 месяцев";
+        periodErrorEl.textContent = 'Неверное значение. Максимальный период: 18 месяцев';
         return;
     }
 
